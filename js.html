@@ -1,9 +1,5 @@
 <script>
 
-const NOTIFICACION_OK = 1;
-const NOTIFICACION_DANGER = 2;
-const NOTIFICACION_WARNING = 3;
-
 function crearTablaContactos()
 {
     let tabla = document.getElementById('tablaContactos');
@@ -57,51 +53,69 @@ function crearTablaContactosCorrectamente(obj)
     document.getElementById('divContactos').appendChild(tabla);
 
     //mostrar notificación de ok
-    crearNotificacion(NOTIFICACION_OK,'Contactos obtenidos correctamente','Todo en orden');
+    crearNotificacionOK('Contactos obtenidos correctamente','Todo en orden');
 }
 
 function crearTablaContactosError()
 {
     //mostrar notificación de error
-    crearNotificacion(NOTIFICACION_DANGER,'No se han podido leer los contactos','ERROR');
+    crearNotificacionError('No se han podido leer los contactos','ERROR');
 }
 
-function crearNotificacion(tipo, mensaje, titulo)
+function crearNotificacion(mensaje, titulo)
 {
-    //obtenemos datos
-    let mensajeNotificacion = document.getElementById('mensajeNotificacion');
-    let tituloNotificacion = document.getElementById('tituloNotificacion');
+    document.getElementById('mensajeNotificacion').textContent = mensaje;
+    document.getElementById('tituloNotificacion').textContent = titulo;
     let elementoNotificacion = document.getElementById('notificacion');
-    let iconoNotificacion = document.getElementById('iconoNotificacion');
-    let notificacion = bootstrap.Toast.getOrCreateInstance(elementoNotificacion);
-
-    //editar la notificación
-    mensajeNotificacion.textContent = mensaje;
-    tituloNotificacion.textContent = titulo;
-
-    switch(tipo)
-    {
-        case NOTIFICACION_OK: 
-        iconoNotificacion.className = '';
-        iconoNotificacion.classList.add('bi','bi-check2-square');
-        elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-verde-oscuro');
-        break;
-
-        case NOTIFICACION_DANGER: 
-        iconoNotificacion.className = '';
-        iconoNotificacion.classList.add('bi','bi-bug');
-        elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-rojo-oscuro');
-        break;
-
-        case NOTIFICACION_WARNING: 
-        iconoNotificacion.className = '';
-        iconoNotificacion.classList.add('bi','bi-exclamation-square');
-        elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-amarillo-oscuro');
-        break;
-    }
-    
-    //mostrar notificación
-    notificacion.show();
+    bootstrap.Toast.getOrCreateInstance(elementoNotificacion).show();
 }
+
+function crearNotificacionOK(mensaje,titulo)
+{
+    crearNotificacion(mensaje, titulo);
+    crearIconoNotificacionOK();
+    crearColorNotificacion('--color-verde-oscuro');
+}
+
+function crearNotificacionError(mensaje,titulo)
+{
+    crearNotificacion(mensaje, titulo);
+    crearIconoNotificacionError();
+    crearColorNotificacion('--color-rojo-oscuro');    
+}
+
+function crearNotificacionAdvertencia(mensaje,titulo)
+{
+    crearNotificacion(mensaje, titulo);
+    crearIconoNotificacionAdvertencia();
+    crearColorNotificacion('--color-amarillo-oscuro');    
+}
+
+function crearIconoNotificacionOK()
+{
+    document.getElementById('iconoNotificacion').className = '';
+    document.getElementById('iconoNotificacion').classList.add('bi','bi-check2-square');
+}
+
+function crearIconoNotificacionError()
+{
+    document.getElementById('iconoNotificacion').className = '';
+    document.getElementById('iconoNotificacion').classList.add('bi','bi-bug');    
+}
+
+function crearIconoNotificacionAdvertencia()
+{
+    document.getElementById('iconoNotificacion').className = '';
+    document.getElementById('iconoNotificacion').classList.add('bi','bi-exclamation-square');    
+}
+
+function crearColorNotificacion(color)
+{
+    let elementoNotificacion = document.getElementById('notificacion');
+    elementoNotificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue(color);  
+}
+
+
+
 
 </script>
