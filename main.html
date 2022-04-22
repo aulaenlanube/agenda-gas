@@ -30,7 +30,7 @@
     <!-- Modal -->
     <div class="modal fade" id="crearContactoModal" tabindex="-1" aria-labelledby="tituloCrearContactoModal"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-lg modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="tituloCrearContactoModal">Nuevo contacto</h5>
@@ -38,13 +38,24 @@
                 <!-- Formulario crear contacto -->
                 <form onsubmit="insertarContacto()" method="dialog" id="formulario">
                     <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Introduce el nombre del contacto</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" required>
+                        <!-- Nombre y apellidos -->
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[\D]*" title="El nombre no puede contener números" required>
+                            </div>
+                            <div class="col-8">
+                                <label for="apellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" name="apellidos" id="apellidos" pattern="[^0-9]*" title="El nombre no puede contener números" required>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="correo" class="form-label">Introduce el correo del contacto</label>
-                            <input type="email" class="form-control" name="correo" id="correo" required>
+
+                        <!-- Correo y teléfono -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                            <input type="email" class="form-control me-4" name="correo" id="correo" required>
+                            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                            <input type="tel" class="form-control" name="telf" id="telf" pattern="[\d]{9,11}" title="El teléfono debe contener entre 9 y 11 dígitos numéricos" required>
                         </div>
                     </div>
                     <div class="modal-footer">
