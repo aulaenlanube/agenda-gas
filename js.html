@@ -100,6 +100,17 @@ function crearTablaContactosCorrectamente(obj)
             let celda = document.createElement('td');
             celda.textContent = obj[i][j];
             fila.appendChild(celda);
+
+            //si es el quinto elemento de la fila
+            if(j == 4)
+            {
+                //creamos la imagen
+                celda.textContent = '';
+                let imagen = document.createElement('img');
+                imagen.classList.add('img-fluid','rounded');
+                imagen.src = obj[i][j];
+                celda.appendChild(imagen); 
+            }
         }
         //agregar los botones a la fila
         fila.appendChild(crearCeldaBotones(i+1,obj[i]));
