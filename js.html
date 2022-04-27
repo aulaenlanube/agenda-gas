@@ -310,131 +310,35 @@ function eliminarTabla()
     if(tabla) tabla.remove();
 }
 
-//
-// N O T I F I C A C I O N E S
-//
+function importarContactos()
+{
+    //eliminamos la tabla si existe
+    eliminarTabla();
 
-const ICONO_CHECK = 'bi-check2-square';
-const ICONO_PAPELERA = 'bi-trash';
-const ICONO_CONTACTO = 'bi-person-plus-fill';
-const ICONO_ERROR = 'bi-bug';
-const ICONO_ADVERTENCIA = 'bi-exclamation-square';  
+    //crear loader
+    crearLoaderPuntos('divContactos');
 
-const LOTTIE_CHECK = 'https://assets3.lottiefiles.com/private_files/lf30_dfspihm8.json';
-const LOTTIE_PAPELERA = 'https://assets8.lottiefiles.com/packages/lf20_WcyRdM.json';
-const LOTTIE_CONTACTO = 'https://assets1.lottiefiles.com/packages/lf20_sOjs8q/add_contact_05.json';
-const LOTTIE_ERROR = 'https://assets10.lottiefiles.com/packages/lf20_yw3nyrsv.json';
-const LOTTIE_PELIGRO = 'https://assets2.lottiefiles.com/packages/lf20_qbuxqwzg.json';
-
-function crearNotificacionOK(mensaje, titulo)
-{
-    crearNotificacion(titulo, mensaje, LOTTIE_CHECK, '--color-verde-oscuro');
-}
-function crearNotificacionError(mensaje, titulo)
-{
-    crearNotificacion(titulo, mensaje, LOTTIE_ERROR, '--color-rojo-oscuro');
-}
-function crearNotificacionContacto(mensaje, titulo)
-{
-    crearNotificacion(titulo, mensaje, LOTTIE_CONTACTO, '--color-azul-oscuro');
-}
-function crearNotificacionAdvertencia(mensaje, titulo)
-{
-    crearNotificacion(titulo, mensaje, LOTTIE_ADVERTENCIA, '--color-amarillo-oscuro');
-}
-function crearNotificacionBorrar(mensaje, titulo)
-{
-    crearNotificacion(titulo, mensaje, LOTTIE_PAPELERA, '--color-gris-oscuro');
+    google.script.run
+    .withSuccessHandler(contactosImportadosCorrectamente)
+    .withFailureHandler(contactosImportadosError)
+    .importarContactos();
 }
 
-function crearNotificacion(titulo, mensaje, lottie, color)
-{
-    let notificacion = crearAtributosNotificacion();
-    let cabeceraNotificacion = crearCabeceraNotificacion(titulo, lottie);
-    let cuerpoNotificacion = crearCuerpoNotificacion(mensaje);
-
-    //agregar cabecera y cuerpo
-    notificacion.appendChild(cabeceraNotificacion);
-    notificacion.appendChild(cuerpoNotificacion);
-
-    //establecer color
-    notificacion.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue(color);
-
-    //evento
-    notificacion.addEventListener('hidden.bs.toast', function ()
-    {
-        this.remove();
-    });
-
-    //agregamos al contenedor de notificaciones
-    document.getElementById('contenedorNotificaciones').appendChild(notificacion);
-
-    //instacia y mostrar
-    bootstrap.Toast.getOrCreateInstance(notificacion).show();
+function contactosImportadosCorrectamente()
+{    
+    crearNotificacionOK('Se han agregado los contactos correctamente','OK');
+    eliminarLoader();
+    crearTablaContactos();
 }
 
-function crearCuerpoNotificacion(mensaje)
+function contactosImportadosError()
 {
-    let cuerpoNotificacion = document.createElement('div');
-    cuerpoNotificacion.classList.add('toast-body');
-    cuerpoNotificacion.textContent = mensaje;
-    return cuerpoNotificacion;
+    crearNotificacionError('No se ha podido importar los contactos','ERROR');
+    eliminarLoader();
+    crearTablaContactos();
 }
 
-function crearCabeceraNotificacion(titulo, lottie)
-{
-    //crear cabecera
-    let cabeceraNotificacion = document.createElement('div');
-    cabeceraNotificacion.classList.add('toast-header','p-0');
 
-    //creamos el lottie, pasando el contenedor
-    crearLottieNotificacion(cabeceraNotificacion,lottie);
-
-    //crear el título
-    let tituloNotificacion = document.createElement('strong');
-    tituloNotificacion.classList.add('mx-2');
-    tituloNotificacion.textContent = titulo;
-
-    cabeceraNotificacion.appendChild(tituloNotificacion);
-    return cabeceraNotificacion;
-}
-
-function crearIconoNotificacion(contenedor, icono)
-{
-    let divIcono = document.createElement('div');
-    let iconoNotificacion = document.createElement('i');
-    divIcono.classList.add('icono-notificacion');
-    iconoNotificacion.classList.add('bi', icono);
-    divIcono.appendChild(iconoNotificacion);
-    contenedor.appendChild(divIcono);    
-}
-
-function crearLottieNotificacion(contenedor, lottie)
-{
-    let divIcono = document.createElement('div');
-    let iconoNotificacion = document.createElement('lottie-player');
-
-    //establecer los atributos
-    iconoNotificacion.setAttribute('src', lottie);
-    iconoNotificacion.setAttribute('background','transparent');
-    iconoNotificacion.setAttribute('speed','1');
-    iconoNotificacion.style.width = '3rem';
-    iconoNotificacion.style.height = '3rem';
-    iconoNotificacion.autoplay = true;
-
-    divIcono.appendChild(iconoNotificacion);
-    contenedor.appendChild(divIcono);  
-}
-
-function crearAtributosNotificacion()
-{
-    let notificacion = document.createElement('div');
-    notificacion.classList.add('toast', 'align-items-center', 'text-white', 'border-0');
-    notificacion.setAttribute('role','alert');
-    notificacion.setAttribute('aria-live','assertive');
-    notificacion.setAttribute('aria-atomic','true');
-    return notificacion;
-}
 
 
 
