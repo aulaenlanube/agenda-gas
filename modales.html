@@ -24,7 +24,7 @@ function abrirModalCrearContacto()
         bootstrap.Modal.getOrCreateInstance(document.getElementById('crearContactoModal')).show();
     }
 
-    function abrirModalModificarContacto(numFila, datosContacto)
+    function abrirModalModificarContacto(contacto)
     {
         //boton modificar
         let boton = document.getElementById('botonCrearModificar');
@@ -36,13 +36,13 @@ function abrirModalCrearContacto()
         document.getElementById('tituloModal').textContent = 'Modificar contacto';
 
         //modificar submit
-        document.getElementById('formulario').onsubmit = () => modificarContacto(numFila);
+        document.getElementById('formulario').onsubmit = () => modificarContacto(contacto.fila);
 
         //obtener datos
-        document.getElementById('nombre').value = datosContacto.nombre;
-        document.getElementById('apellidos').value = datosContacto.apellidos;
-        document.getElementById('correo').value = datosContacto.correo;
-        document.getElementById('telf').value = datosContacto.telf;
+        document.getElementById('nombre').value = contacto.nombre;
+        document.getElementById('apellidos').value = contacto.apellidos;
+        document.getElementById('correo').value = contacto.correo;
+        document.getElementById('telf').value = contacto.telf;
 
         //abrir modal
         bootstrap.Modal.getOrCreateInstance(document.getElementById('crearContactoModal')).show();
