@@ -30,4 +30,37 @@
         if (loader) loader.remove();
     }
 
+    function crearLoaderImagen(elementoPadre)
+    {        
+        let loader = document.createElement('div');        
+        loader.appendChild(document.createElement('div'));
+        loader.appendChild(document.createElement('div'));
+        loader.appendChild(document.createElement('div'));
+        loader.appendChild(document.createElement('div'));
+        loader.classList.add('lds-ring');
+        elementoPadre.appendChild(loader);
+        return loader;
+    }
+
+    function crearLoaderLottie(elementoPadre, lottie)
+    {
+        eliminarLoader();
+        let loaderLottie = document.createElement('lottie-player');
+
+        //establecer los atributos
+        loaderLottie.setAttribute('src', lottie);
+        loaderLottie.setAttribute('background','transparent');
+        loaderLottie.setAttribute('speed','2');
+        loaderLottie.style.width = '12rem';
+        loaderLottie.style.height = '12rem';
+        loaderLottie.autoplay = true;
+
+        let divLottie = document.createElement('div');
+        divLottie.appendChild(loaderLottie);
+        divLottie.id = 'loader';
+
+        //agregamos al DOM
+        document.getElementById(elementoPadre).appendChild(divLottie);   
+    }
+
 </script>

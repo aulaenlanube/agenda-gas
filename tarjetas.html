@@ -123,14 +123,25 @@
         let imagenTarjeta = document.createElement('div');
         imagenTarjeta.classList.add('col-6','rounded','d-flex','justify-content-end');
         let cajaImagenTarjeta = document.createElement('div');
-        cajaImagenTarjeta.classList.add('box','border','border-3','border-dark','rounded');
+        cajaImagenTarjeta.classList.add('box','rounded','d-flex','justify-content-center','align-items-center','img-contacto');
         let imagen = document.createElement('img');
-        imagen.classList.add('img-fluid','rounded','img-contacto');
+        imagen.classList.add('img-fluid','rounded','img-contacto','border','border-3','border-dark');
         imagen.src = contacto.imagen;
+        imagen.style.display = 'none';
 
         //agregamos imagen a la caja y tarjeta
         cajaImagenTarjeta.appendChild(imagen)
         imagenTarjeta.appendChild(cajaImagenTarjeta);
+
+        //crear icono de carga
+        let loader = crearLoaderImagen(cajaImagenTarjeta);
+
+        //evento al finalizar la carga
+        imagen.onload = () =>
+        {
+            loader.remove();
+            imagen.style.display = 'inline';
+        }
 
         return imagenTarjeta;        
     }
