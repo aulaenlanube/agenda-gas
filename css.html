@@ -69,16 +69,7 @@ header
 {
   object-fit: cover;
   height: 12rem;
-  width: 12rem;
-}
 
-.img-form
-{
-  height: 18rem;
-  width: 18rem;
-  border: 1px solid black;
-  border-radius: .5rem;
-  object-fit: cover;  
 }
 
 .img-tabla
@@ -86,6 +77,53 @@ header
   object-fit: cover;
   height: 4rem;
 }
+
+
+
+
+/* CLASES FORMULARIO */
+.img-form
+{
+  position: absolute;
+  height: 18rem;  
+  border: 1px solid black;
+  border-radius: .5rem;
+  object-fit: cover;  
+  z-index: 2;
+}
+
+.caja-icono-form
+{
+  position: absolute;
+  height: 18rem;
+  border: .4rem dashed green;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.icono-img-form
+{
+  font-size: 10rem;
+  color: green;
+  animation: animacion-drag-drop 3s infinite;
+}
+
+@keyframes animacion-drag-drop
+{
+  0% {font-size: 10rem;}
+  50% {font-size: 9rem;}
+  100% {font-size: 10rem;}
+}
+
+
+
+
+
+
+
+
 
 
 
