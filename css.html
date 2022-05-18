@@ -69,6 +69,7 @@ header
 {
   object-fit: cover;
   height: 12rem;
+  min-width: 12rem;
 
 }
 
@@ -82,40 +83,57 @@ header
 
 
 /* CLASES FORMULARIO */
+
+.div-datos-form
+{
+  height: 20rem;
+  width: 20rem;  
+  margin: 1rem;
+}
+
+.div-img-form
+{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+  width: 20rem;  
+}
+
+
+
 .img-form
 {
   position: absolute;
-  height: 18rem;  
+  height: 20rem;
+  width: 20rem;    
   border: 1px solid black;
   border-radius: .5rem;
   object-fit: cover;  
   z-index: 2;
 }
 
-.caja-icono-form
+.lottie-form
 {
   position: absolute;
-  height: 18rem;
+  height: 20rem;
+  width: 20rem;  
   border: .4rem dashed green;
-  display: none;
-  justify-content: center;
-  align-items: center;
+  display: none;  
   z-index: 1;
 }
 
-.icono-img-form
+.icono-form
 {
-  font-size: 10rem;
-  color: green;
-  animation: animacion-drag-drop 3s infinite;
+  position: absolute;
+  color: var(--color-amarillo-claro);
+  font-size: 1.5rem;
+  right: 0rem;
+  top: 0rem;
+  z-index: 3;
 }
 
-@keyframes animacion-drag-drop
-{
-  0% {font-size: 10rem;}
-  50% {font-size: 9rem;}
-  100% {font-size: 10rem;}
-}
 
 
 

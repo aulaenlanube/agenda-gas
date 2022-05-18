@@ -34,9 +34,9 @@
                 <!-- Formulario crear contacto -->
                 <form onsubmit="insertarContacto()" method="dialog" id="formulario">
                     <div class="modal-body">                        
-                        <div class="row mb-3">
+                        <div class="mb-3 d-flex justify-content-center align-items-center flex-wrap">
                             <!-- Parte izquierda  -->
-                            <div class="col-6 d-flex flex-column">
+                            <div class="div-datos-form">
                                 <!-- Nombre -->
                                 <div class="mb-2">
                                     <label for="nombre" class="form-label">Nombre</label>
@@ -65,10 +65,11 @@
                             </div>
 
                             <!-- Parte derecha -->
-                            <div class="col-6 d-flex justify-content-center align-items-center p-0 position-relative">
+                            <div class="div-img-form">
+                                <i class="icono-form bi bi-question-circle-fill btn" data-bs-toggle="popover" data-bs-content="Se recomiendan imágenes cuadradas para una mejor visualización. De lo contrario parte de la imagen podrá ser recortada, resolución recomendada 320x320" data-bs-trigger="hover"></i>
                                 <img class="img-fluid img-form" id="imgForm" alt="Imagen de contacto">
-                                <div class="caja-icono-form container-fluid" id="cajaIconoForm">
-                                    <i class="icono-img-form bi bi-cloud-plus"></i>
+                                <div class="lottie-form" id="lottieForm">
+                                    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_z7DhMX.json" speed="1" loop autoplay></lottie-player>                                   
                                 </div>
                             </div>
                         </div>
