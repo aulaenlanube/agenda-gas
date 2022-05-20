@@ -54,5 +54,17 @@
         bootstrap.Modal.getOrCreateInstance(document.getElementById('crearContactoModal')).show();
     }
 
+    function abrirModalInfoContacto(contacto)
+    {
+        //obtener datos
+        document.getElementById('nombreInfoContacto').textContent = contacto.nombre+' '+contacto.apellidos;
+        document.getElementById('correoInfoContacto').textContent = contacto.correo;
+        document.getElementById('telfInfoContacto').textContent = contacto.telf;
+        document.getElementById('imgInfoContacto').src = contacto.imagen;
+
+        //abrir modal
+        bootstrap.Modal.getOrCreateInstance(document.getElementById('infoContactoModal')).show();
+    }
+
 
 </script>

@@ -23,7 +23,7 @@
         </div>        
     </div>
 
-    <!-- Modal -->
+    <!-- Modal crear modificar contacto -->
     <div class="modal fade" id="crearContactoModal" tabindex="-1" aria-labelledby="tituloCrearContactoModal"
         aria-hidden="true">
         <div class="modal-lg modal-dialog">
@@ -82,5 +82,40 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal info contacto -->
+    <div class="modal fade" id="infoContactoModal" tabindex="-1" aria-labelledby=""
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">                              
+                    <div class="modal-body">                        
+                        <div class="d-flex justify-content-center align-items-center flex-column">                            
+                            <!-- Parte superior  -->
+                            <div class="m-3">
+                                <h3 class="text-uppercase text-center fw-bold mb-2" id="nombreInfoContacto"></h3>
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-envelope-fill me-2"></i>
+                                    <h5 class="me-4" id="correoInfoContacto"></h5>
+                                    <i id="copiarCorreo" class="bi bi-clipboard boton-copiar"  data-bs-toggle="tooltip" data-bs-placement="right" title="Copiar correo"></i>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-telephone-fill me-2"></i>
+                                    <h5 class="me-4" id="telfInfoContacto"></h5>
+                                    <i id="copiarTelf" class="bi bi-clipboard boton-copiar"  data-bs-toggle="tooltip" data-bs-placement="right" title="Copiar teléfono"></i>
+                                </div>                              
+                            </div>
+                            <!-- Parte inferior -->
+                            <div class="m-3">
+                                <img id="imgInfoContacto" class="border border-4 border-dark rounded" alt="Vista previa de la imagen del contacto">                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    
 
 </main>

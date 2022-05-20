@@ -75,6 +75,66 @@ const LOTTIE_LOADER_AVION_PAPEL = 'https://assets7.lottiefiles.com/packages/lf20
         
     });
 
+    document.getElementById('copiarCorreo').addEventListener('click', function(event)
+    {
+        let correo = document.getElementById('correoInfoContacto').textContent;
+        navigator.clipboard.writeText(correo)
+        .then(() => 
+        { 
+            this.classList.remove('bi-clipboard');
+            this.classList.add('bi-check-lg');
+            this.title = 'Correo copiado';
+            bootstrap.Tooltip.getInstance(this).dispose();
+            bootstrap.Tooltip.getOrCreateInstance(this).show();
+
+            let icono = this;
+
+            setTimeout(function()
+            {
+                icono.classList.remove('bi-check-lg');
+                icono.classList.add('bi-clipboard');
+                icono.title = 'Copiar correo';
+                bootstrap.Tooltip.getInstance(icono).dispose();
+                bootstrap.Tooltip.getOrCreateInstance(icono).hide();                
+
+            }, 2000, icono)
+        });
+        
+        
+    });
+
+    document.getElementById('copiarTelf').addEventListener('click', function(event)
+    {
+        let telf = document.getElementById('telfInfoContacto').textContent;
+        navigator.clipboard.writeText(telf)
+        .then(() => 
+        { 
+            this.classList.remove('bi-clipboard');
+            this.classList.add('bi-check-lg');
+            this.title = 'Teléfono copiado';
+            bootstrap.Tooltip.getInstance(this).dispose();
+            bootstrap.Tooltip.getOrCreateInstance(this).show();
+
+            let icono = this;
+
+            setTimeout(function()
+            {
+                icono.classList.remove('bi-check-lg');
+                icono.classList.add('bi-clipboard');
+                icono.title = 'Copiar teléfono';
+                bootstrap.Tooltip.getInstance(icono).dispose();
+                bootstrap.Tooltip.getOrCreateInstance(icono).hide();                
+
+            }, 2000, icono)
+        });      
+    });
+
+
+
+    ////////////////////////////////////////////
+    ////////////////////////////////////////////
+    ////////////////////////////////////////////
+
 
 
     function subirArriba()
@@ -282,6 +342,11 @@ const LOTTIE_LOADER_AVION_PAPEL = 'https://assets7.lottiefiles.com/packages/lf20
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
+})
+    //habilitar tooltips
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
 </script>
