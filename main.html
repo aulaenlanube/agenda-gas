@@ -1,7 +1,7 @@
 <main>
     <!-- Botones superiores -->
     <div class="d-flex justify-content-center my-3">
-        <button type="button" class="btn btn-success m-2" onclick="crearTarjetasContactos()">
+        <button type="button" class="btn btn-success m-2" onclick="crearTarjetasCuadradas()">
             <i class="bi bi-postcard"></i>
         </button>
         <button type="button" class="btn btn-success m-2" onclick="crearTablaContactos()">
@@ -116,6 +116,30 @@
             </div>
         </div>
     </div>
+
+    <!-- Plantilla contacto 1 -->
+    <template id="plantillaContacto">
+
+        <div id="plantillaLoader" class="my-5 mx-2 plantilla-loader">
+          <p>Cargando imagen</p>
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+
+        <div id="plantillaNumero" class="my-5 mx-2">
+            <div class="caja-contacto">
+                <img id="plantillaImagen" alt="Imagen del contacto">
+                <div class="datos-contacto">
+                    <h3 id="plantillaNombre"></h3>
+                    <span>
+                        <a id="plantillaInfo" class="boton-caja btn btn-success"><i class="bi bi-plus-square"></i></a>
+                        <a id="plantillaEditar" class="boton-caja btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                        <a id="plantillaBorrar" class="boton-caja btn btn-danger"><i class="bi bi-trash"></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </template>
     
 
 </main>

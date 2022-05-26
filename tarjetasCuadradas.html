@@ -1,0 +1,64 @@
+<script>
+
+    function crearTarjetasCuadradas()
+    {
+        limpiar();
+
+        google.script.run
+            .withSuccessHandler(crearTarjetasCuadradasCorrectamente)
+            .withFailureHandler(crearTarjetasError)
+            .obtenerDatos();
+    }        
+
+    function crearTarjetasCuadradasCorrectamente(datos)
+    {
+        //extraer contactos
+        let contactos = extraerContactos(datos);
+
+        let tarjetas = document.createElement('div');
+        tarjetas.id = 'tarjetasContactos';
+        tarjetas.classList.add('d-flex','justify-content-center','flex-wrap');
+
+        //por cada contacto, creamos la tarjeta
+        contactos.forEach(contacto => tarjetas.appendChild(crearContactoPlantilla(contacto)));
+
+        //agegar tarjetas
+        document.getElementById('divContactos').appendChild(tarjetas);
+
+        //eliminaremos el loader
+        eliminarLoader();  
+    }
+
+    function crearContactoPlantilla(contacto)
+    {
+        let plantilla = document.getElementById('plantillaContacto');
+        let copia = document.importNode(plantilla.content, true);
+
+        copia.getElementById('plantillaNumero').id = 'tarjeta'+contacto.fila;
+        copia.getElementById('plantillaNombre').textContent = contacto.nombre+' '+contacto.apellidos;
+        copia.getElementById('plantillaImagen').src = contacto.imagen;
+
+        //botones
+        copia.getElementById('plantillaInfo').onclick = () => abrirModalInfoContacto(contacto);
+        copia.getElementById('plantillaEditar').onclick = () => abrirModalModificarContacto(contacto);
+        copia.getElementById('plantillaBorrar').onclick = () => borrarContacto(contacto.fila);
+
+        let loader = copia.getElementById('plantillaLoader');
+        let tarjeta = copia.getElementById('tarjeta'+contacto.fila);
+
+        tarjeta.style.display = 'none';
+
+        //evento finalización carga de la imagen
+        copia.getElementById('plantillaImagen').onload = () =>
+        {
+            loader.remove();
+            tarjeta.style.display = 'inline';
+        }
+
+        return copia;
+    }
+
+
+
+
+</script>
