@@ -1,16 +1,26 @@
 <main>
     <!-- Botones superiores -->
     <div class="d-flex justify-content-center my-3">
-        <button type="button" class="btn btn-success m-2" onclick="crearTarjetasCuadradas()">
-            <i class="bi bi-postcard"></i>
-        </button>
-        <button type="button" class="btn btn-success m-2" onclick="crearTablaContactos()">
-            <i class="bi bi-table"></i>
-        </button>
+
         <button type="button" class="btn btn-primary m-2" onclick="abrirModalCrearContacto()">
             <i class="bi bi-person-plus"></i>
         </button>
         <button type="button" class="btn btn-warning m-2" onclick="importarContactos()">+ 5</button>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle m-2" type="button" id="desplegableEstilos" data-bs-toggle="dropdown" aria-expanded="false">
+             <i class="bi bi-gear fs-5"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="desplegableEstilos">
+              <li><a class="dropdown-item" id="tarjetasEstiloTabla">Estilo tabla</a></li>
+              <li><a class="dropdown-item" id="tarjetasEstiloFila">Estilo fila</a></li>
+              <li><a class="dropdown-item" id="tarjetasEstilo1">Estilo tarjeta 1</a></li>
+              <li><a class="dropdown-item" id="tarjetasEstilo2">Estilo tarjeta 2</a></li>
+              <li><a class="dropdown-item" id="tarjetasEstilo3">Estilo tarjeta 3</a></li>
+              <li><a class="dropdown-item" id="tarjetasEstilo4">Estilo tarjeta 4</a></li>
+              <li><a class="dropdown-item" id="tarjetasEstilo5">Estilo tarjeta 5</a></li>
+            </ul>
+          </div>
     </div>
 
     <!-- Contactos -->
@@ -106,7 +116,7 @@
                             </div>
                             <!-- Parte inferior -->
                             <div class="m-3">
-                                <img id="imgInfoContacto" class="border border-4 border-dark rounded" alt="Vista previa de la imagen del contacto">                              
+                                <img id="imgInfoContacto" class="img-info-contacto" alt="Vista previa de la imagen del contacto">                              
                             </div>
                         </div>
                     </div>
@@ -117,29 +127,7 @@
         </div>
     </div>
 
-    <!-- Plantilla contacto 1 -->
-    <template id="plantillaContacto">
 
-        <div id="plantillaLoader" class="my-5 mx-2 plantilla-loader">
-          <p>Cargando imagen</p>
-          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-        </div>
-
-        <div id="plantillaNumero" class="my-5 mx-2">
-            <div class="caja-contacto">
-                <img id="plantillaImagen" alt="Imagen del contacto">
-                <div class="datos-contacto">
-                    <h3 id="plantillaNombre"></h3>
-                    <span>
-                        <a id="plantillaInfo" class="boton-caja btn btn-success"><i class="bi bi-plus-square"></i></a>
-                        <a id="plantillaEditar" class="boton-caja btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                        <a id="plantillaBorrar" class="boton-caja btn btn-danger"><i class="bi bi-trash"></i></a>
-                    </span>
-                </div>
-            </div>
-        </div>
-
-    </template>
     
 
 </main>
