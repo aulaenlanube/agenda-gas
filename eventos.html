@@ -1,0 +1,102 @@
+<script>
+
+    //inicio
+    window.addEventListener('load', function()
+    {
+        mostrar();
+    });
+
+    //insertar contacto
+    document.getElementById('insertarContacto').addEventListener('click', function()
+    {
+        Contacto.nuevo();
+    });
+
+    //eventos botones mostrar contactos
+    document.getElementById('tarjetasEstilo1').addEventListener('click', function(event)
+    {        
+        Contacto.aplicarEstilo(Contacto.ESTILO_1);        
+    });
+    document.getElementById('tarjetasEstilo2').addEventListener('click', function(event)
+    {
+        Contacto.aplicarEstilo(Contacto.ESTILO_2);    
+    });
+    document.getElementById('tarjetasEstilo3').addEventListener('click', function(event)
+    {
+        Contacto.aplicarEstilo(Contacto.ESTILO_3);     
+    });
+    document.getElementById('tarjetasEstilo4').addEventListener('click', function(event)
+    {
+        Contacto.aplicarEstilo(Contacto.ESTILO_4);   
+    });
+    document.getElementById('tarjetasEstilo5').addEventListener('click', function(event)
+    {
+        Contacto.aplicarEstilo(Contacto.ESTILO_5);    
+    });
+
+    //boton subir
+    window.addEventListener('scroll', function ()
+    {
+        if (this.window.scrollY > 500)
+        {
+            document.getElementById('botonSubir').style.transform = "scale(1)";
+        }
+        if (this.window.scrollY < 500)
+        {
+            document.getElementById('botonSubir').style.transform = "scale(0)";
+        }
+    });
+
+    //cargar imagen
+    document.getElementById('imagen').addEventListener("change", function()
+    {
+        document.getElementById('imgForm').src = URL.createObjectURL(this.files[0])
+    });
+
+    //dragover
+    document.getElementById('imgForm').addEventListener('dragover', function(event)
+    {
+        event.preventDefault();
+        this.style.filter = 'opacity(0%)';
+        document.getElementById('lottieForm').style.display = 'flex';
+    });
+
+    //dragleave
+    document.getElementById('imgForm').addEventListener('dragleave', function(event)
+    {
+        this.style.filter = 'opacity(100%)';
+        document.getElementById('lottieForm').style.display = 'none';
+    });
+
+    //drop
+    document.getElementById('imgForm').addEventListener('drop', function(event)
+    {
+        event.preventDefault();
+
+        let ficheros = event.dataTransfer.files;
+
+        //pasamos los archivos al input
+        document.getElementById('imagen').files = ficheros;
+
+        //creamos una url para mostrar la imagen
+        document.getElementById('imgForm').src = URL.createObjectURL(ficheros[0]);
+
+        //mostramos la imagen y quitamos zona de carga
+        this.style.filter = 'opacity(100%)';
+        document.getElementById('lottieForm').style.display = 'none';
+        
+    });
+
+    //copiar correo
+    document.getElementById('copiarCorreo').addEventListener('click', function(event)
+    {        
+        copiarContenido(this, 'correoInfoContacto');        
+    });
+
+    //copiar telf
+    document.getElementById('copiarTelf').addEventListener('click', function(event)
+    {        
+        copiarContenido(this, 'telfInfoContacto');        
+    });
+
+</script>
