@@ -3,13 +3,19 @@
     //inicio
     window.addEventListener('load', function()
     {
-        mostrar();
+        crearTarjetas();  
     });
 
     //insertar contacto
     document.getElementById('insertarContacto').addEventListener('click', function()
     {
         Contacto.nuevo();
+    });
+
+    //importar contactos
+    document.getElementById('importarContactos').addEventListener('click', function()
+    {
+       importarContactos();
     });
 
     //eventos botones mostrar contactos
@@ -45,6 +51,11 @@
         {
             document.getElementById('botonSubir').style.transform = "scale(0)";
         }
+    });
+    document.getElementById('botonSubir').addEventListener('click', function()
+    {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     });
 
     //cargar imagen

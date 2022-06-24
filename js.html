@@ -43,21 +43,10 @@ const LOTTIE_LOADER_AVION_PAPEL = 'https://assets7.lottiefiles.com/packages/lf20
         }, 2000);
     }
 
-    function subirArriba()
-    {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-
     function limpiar()
     {       
         eliminarTarjetas();
         crearLoaderLottie('divContactos', LOTTIE_LOADER_AVION_PAPEL);
-    }
-
-    function mostrar()
-    {   
-        crearTarjetas();      
     }
 
     function extraerContactos(datos)
